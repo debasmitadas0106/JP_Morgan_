@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="contact1.css">
+</head>
+
+<body>
+  <div class="contain">
+    <div class="image">
+      <h2>SIGN IN</h2>
+      <p>Put your information to sign in/log in</p>
+      <hr>
+    </div>
+    <form action="/contact" method="post">
+      <div class="main"><label for='em'>EMAIL</label></div>
+      <input type="email" id="em" placeholder="enter your email" required>
+
+      <div class="main"><label for='pass'>PASSWORD</label></div>
+      <input type="password" id="pass" placeholder="enter your password" required>
+
+      <div class="main2"><label for="confirm_pass">RETYPE PASSWORD</label></div>
+      <input type="password" id="confirm_pass" placeholder="confirm your password" onkeyup="validate_password()"
+        required>
+      <div></div>
+
+      <span id="wrong_pass_alert"></span>
+      <div class="main3">
+        <button type='submit' id='btn' onclick='wrong_pass_alert()' required>Submit</button>
+      </div>
+      <div class="signin">
+        <p>Do not have an account? <a href='reg.html'>Register</a></p>
+      </div>
+    </form>
+  </div>
+  <script>
+    function validate_password() {
+
+      var pass = document.getElementById('pass').value;
+      var confirm_pass = document.getElementById('confirm_pass').value;
+      if (pass != confirm_pass) {
+        document.getElementById('wrong_pass_alert').style.color = 'red';
+        document.getElementById('wrong_pass_alert').innerHTML
+          = '☒ Use same password';
+        document.getElementById('btn').disabled = true;
+        document.getElementById('btn').style.opacity = (0.4);
+      } else {
+        document.getElementById('wrong_pass_alert').style.color = 'green';
+        document.getElementById('wrong_pass_alert').innerHTML =
+          '🗹 Password Matched';
+        document.getElementById('btn').disabled = false;
+        document.getElementById('btn').style.opacity = (1);
+      }
+    }
+
+    function wrong_pass_alert() {
+      if (document.getElementById('pass').value != "" &&
+        document.getElementById('confirm_pass').value != "") {
+        alert("Your response is submitted");
+      } else {
+        alert("Please fill all the fields");
+      }
+    }
+
+  </script>
+</body>
+
+</html>
